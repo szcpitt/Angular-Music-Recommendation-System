@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     constructor(
         private authenticationService: AuthenticationService,
-        private userService: UserService
+        private userService: UserService,
     ) {
         this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
             this.currentUser = user;
@@ -40,4 +40,6 @@ export class HomeComponent implements OnInit, OnDestroy {
             this.users = users;
         });
     }
+
+
 }

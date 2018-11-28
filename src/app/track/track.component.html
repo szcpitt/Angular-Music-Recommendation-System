@@ -1,0 +1,10 @@
+<br><br><br><br>
+<div class="container text-center">
+    <div *ngIf="track" class="vertical-center">
+        <h1>{{ track.name }}</h1>
+        <p><img src="{{ track.album.images[1].url }}" alt="{{ track.album.name }}"></p>
+        <p ><audio controls src="{{ track.preview_url }}"></audio></p>
+    </div>
+    <button type="button" class="btn btn-light" (click)="back()">Back</button>  
+</div>
+
