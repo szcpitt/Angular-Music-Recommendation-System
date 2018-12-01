@@ -9,25 +9,29 @@ import { fakeBackendProvider } from './_helpers';
 import { AppComponent }  from './app.component';
 import { routing }        from './app.routing';
 import { RouterModule, Routes } from '@angular/router';
+import {MatTableModule} from '@angular/material/table';
 
-import { AlertComponent } from './_components';
+import { AlertComponent } from './_components/alert';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
-import { HomeComponent } from './home';
-import { LoginComponent } from './login';
-import { RegisterComponent } from './register';
-import { SearchComponent } from './search/search.component';
-import { ArtistComponent } from './artist/artist.component';
-import { TrackComponent } from './track/track.component';
-import { AlbumComponent } from './album/album.component';
+import { HomeComponent } from './_components/home';
+import { LoginComponent } from './_components/login';
+import { RegisterComponent } from './_components/register';
+import { SearchComponent } from './_components/search/search.component';
+import { ArtistComponent } from './_components/artist/artist.component';
+import { TrackComponent } from './_components/track/track.component';
+import { AlbumComponent } from './_components/album/album.component';
 
-import { SpotifyService } from './spotify.service';
+import { SpotifyService } from './_services/spotify.service';
+
+
 
 @NgModule({
     imports: [
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
-        routing
+        routing,
+        MatTableModule
     ],
     declarations: [
         AppComponent,

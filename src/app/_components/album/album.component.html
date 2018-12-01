@@ -1,0 +1,32 @@
+<div class="container text-center">
+  <div *ngIf="album">
+    <h1>{{ album.name }}</h1>
+    <h2>{{ album.artists[0].name }}</h2>
+    <p><img src="{{ album.images[1].url }}" alt="{{ album.name }}"></p>
+    
+    <h3>Tracks</h3>
+    <!-- <ol>
+      <li *ngFor="let track of album.tracks.items">
+        <a [routerLink]="['/tracks', track.id]" >{{ track.name }}</a>
+      </li>
+    </ol> -->
+  </div>
+
+  <button type="button" class="btn btn-light" (click)="back()">Back</button>
+</div>
+
+<mat-table [dataSource]="album.tracks.items" class="mat-elevation-z8" style="width: 40%;margin-left: 30%">
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef>No </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.track_number}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef>Name </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/tracks', row.id]"></mat-row>
+</mat-table>
+

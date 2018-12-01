@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { SpotifyService } from '../spotify.service';
+import { SpotifyService } from '../../_services/spotify.service';
 
 @Component({
   selector: 'app-album',
@@ -11,7 +11,9 @@ import { SpotifyService } from '../spotify.service';
 export class AlbumComponent implements OnInit {
   id: string;
   album: Object;
-
+  tracks: Object;
+  displayedColumns: string[] = ['id','name'];
+  
   constructor(
     private location: Location,
     private route: ActivatedRoute,
@@ -37,5 +39,4 @@ export class AlbumComponent implements OnInit {
   back(): void {
     this.location.back();
   }
-
 }

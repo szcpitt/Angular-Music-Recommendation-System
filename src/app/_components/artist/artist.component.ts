@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { SpotifyService } from '../spotify.service';
+import { SpotifyService } from '../../_services/spotify.service';
 
 @Component({
   selector: 'app-artist',
@@ -30,6 +30,10 @@ export class ArtistComponent implements OnInit {
 
   renderArtist(res: any): void {
     this.artist = res;
+  }
+
+  back(): void {
+    this.location.back();
   }
 
 }

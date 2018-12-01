@@ -1,12 +1,12 @@
 ﻿import { Routes, RouterModule } from '@angular/router';
 
-import { SearchComponent } from './search/search.component';
-import { HomeComponent } from './home';
-import { LoginComponent } from './login';
-import { RegisterComponent } from './register';
-import { ArtistComponent } from './artist/artist.component';
-import { TrackComponent } from './track/track.component';
-import { AlbumComponent } from './album/album.component';
+import { SearchComponent } from './_components/search/search.component';
+import { HomeComponent } from './_components/home';
+import { LoginComponent } from './_components/login';
+import { RegisterComponent } from './_components/register';
+import { ArtistComponent } from './_components/artist/artist.component';
+import { TrackComponent } from './_components/track/track.component';
+import { AlbumComponent } from './_components/album/album.component';
 import { AuthGuard } from './_guards';
 
 const appRoutes: Routes = [
