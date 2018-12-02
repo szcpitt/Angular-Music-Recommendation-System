@@ -26,4 +26,8 @@ export class UserService {
     delete(id: number) {
         return this.http.delete(`${config.apiUrl}/users/${id}`);
     }
+
+    postLike(userId: number, artistName: string) {
+        return this.http.post(`${config.apiUrl}/song/like/${userId}/${artistName}`,null);
+    }
 }

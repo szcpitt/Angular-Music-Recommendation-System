@@ -2,7 +2,7 @@
 <div class="container text-center">
     <div *ngIf="track" class="vertical-center">
         <h1>{{ track.name }}
-            <button type="button" class="btn btn-default btn-sm" (click)="like()">
+            <button type="button" class="btn btn-default btn-sm" (click)="like(track.artists[0].name)">
                 <span class="glyphicon glyphicon-heart"></span>
             </button>
         </h1>

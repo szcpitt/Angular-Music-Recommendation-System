@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { SpotifyService } from '../../_services/spotify.service';
+import { AuthenticationService } from '@/_services';
+import { UserService } from '../../_services/user.service';
+import { User } from '@/_models';
 
 @Component({
   selector: 'app-track',
@@ -11,15 +14,19 @@ import { SpotifyService } from '../../_services/spotify.service';
 export class TrackComponent implements OnInit {
   id: string;
   track: Object;
+  user: User;
 
   constructor(
     private location: Location,
     private route: ActivatedRoute,
-    private spotifyService: SpotifyService
+    private spotifyService: SpotifyService,
+    private userService: UserService,
+    private authenticationService: AuthenticationService
   ) {
     route.params.subscribe(params => {
       this.id = params['id'];
     });
+    this.user = this.authenticationService.currentUserValue;
   }
 
   ngOnInit(): void {
@@ -38,7 +45,9 @@ export class TrackComponent implements OnInit {
     this.location.back();
   }
 
-  like() : void {
-    
+  like(artistName: string) : void {
+    console.log(artistName);
+    console.log(this.user.id);
+    this.userService.postLike(this.user.id,artistName);
   } 
 }

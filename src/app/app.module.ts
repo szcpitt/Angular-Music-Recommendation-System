@@ -20,6 +20,7 @@ import { SearchComponent } from './_components/search/search.component';
 import { ArtistComponent } from './_components/artist/artist.component';
 import { TrackComponent } from './_components/track/track.component';
 import { AlbumComponent } from './_components/album/album.component';
+import { RecommendationComponent } from './_components/recommendation/recommendation.component';
 
 import { SpotifyService } from './_services/spotify.service';
 
@@ -42,7 +43,8 @@ import { SpotifyService } from './_services/spotify.service';
         SearchComponent,
         ArtistComponent,
         TrackComponent,
-        AlbumComponent
+        AlbumComponent,
+        RecommendationComponent
     ],
     providers: [
         //{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
