@@ -1,5 +1,6 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 import { User } from '@/_models';
 
@@ -29,5 +30,9 @@ export class UserService {
 
     postLike(userId: number, artistName: string) {
         return this.http.post(`${config.apiUrl}/song/like/${userId}/${artistName}`,null);
+    }
+
+    getRecommendationList(userId: number): Observable<Object> {
+        return this.http.get(`${config.apiUrl}/song/recommendationList/${userId}`);
     }
 }

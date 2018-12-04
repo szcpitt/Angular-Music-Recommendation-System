@@ -51,7 +51,7 @@ import { SpotifyService } from './_services/spotify.service';
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
         { provide: SpotifyService, useClass: SpotifyService },
         // provider used to create fake backend
-        fakeBackendProvider
+        //fakeBackendProvider
     ],
     bootstrap: [AppComponent]
 })

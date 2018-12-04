@@ -1,1 +1,35 @@
-<p>Get Recommended Songs!</p>
+<div>
+    <div class="container text-center">
+        <h1 class="display-3 mb-4">
+        Recommended
+        <span class="display-4 text-muted">Songs</span>
+        </h1>
+    </div>
+    
+<mat-table [dataSource]="playList" class="mat-elevation-z8" style="width: 40%;margin-left: 30%">
+    <ng-container matColumnDef="track_id">
+        <mat-header-cell *matHeaderCellDef>Track ID </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.track_id}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="song_name">
+        <mat-header-cell *matHeaderCellDef>Song </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.song_name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="artist_name">
+        <mat-header-cell *matHeaderCellDef>Artist </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.artist_name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="album_name">
+        <mat-header-cell *matHeaderCellDef>Album </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.album_name}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/tracks', row.track_id]"></mat-row>
+</mat-table>
+
+<button type="button" class="btn btn-light" (click)="back()" style="width: 40%;margin-left: 30%">Back</button>
+</div>
