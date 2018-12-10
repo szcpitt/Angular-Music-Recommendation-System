@@ -1,6 +1,6 @@
 ﻿import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule }    from '@angular/forms';
+import { ReactiveFormsModule, FormsModule }    from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // used to create fake backend
@@ -32,7 +32,8 @@ import { SpotifyService } from './_services/spotify.service';
         ReactiveFormsModule,
         HttpClientModule,
         routing,
-        MatTableModule
+        MatTableModule,
+        FormsModule
     ],
     declarations: [
         AppComponent,
@@ -51,7 +52,7 @@ import { SpotifyService } from './_services/spotify.service';
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
         { provide: SpotifyService, useClass: SpotifyService },
         // provider used to create fake backend
-        //fakeBackendProvider
+        fakeBackendProvider
     ],
     bootstrap: [AppComponent]
 })

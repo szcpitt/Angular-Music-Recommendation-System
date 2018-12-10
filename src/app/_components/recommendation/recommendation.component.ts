@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 //import { SpotifyService } from '../../_services/spotify.service';
-import { UserService, AuthenticationService } from '@/_services';
+import { AlertService, UserService, AuthenticationService } from '@/_services';
 import { User } from '@/_models';
 
 @Component({
@@ -22,7 +22,8 @@ export class RecommendationComponent implements OnInit {
     private location: Location,
     //private spotifyService: SpotifyService,
     private userService: UserService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private alertService: AlertService
   ) {
     route.params.subscribe(params => {
       this.id = params['id'];
@@ -33,8 +34,12 @@ export class RecommendationComponent implements OnInit {
   ngOnInit(): void {
     this.userService
       .getRecommendationList(this.user.id)
-      .subscribe((res: any) => {
-        this.playList = res;
+      .subscribe(
+        res => {
+          this.playList = res;
+        },
+        error => {
+          this.alertService.error(error);
       });
   }
 

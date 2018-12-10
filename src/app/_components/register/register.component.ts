@@ -4,12 +4,23 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AlertService, UserService, AuthenticationService } from '@/_services';
+import { parseCookieValue } from '@angular/common/src/cookie';
 
 @Component({templateUrl: 'register.component.html'})
 export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
     loading = false;
     submitted = false;
+    artists = [{name: "Linkin Park", isChecked: false}, 
+                {name: "Evanescence", isChecked: false},
+                {name: "Red Hot Chili Peppers", isChecked: false},
+                {name: "Missy Elliott", isChecked: false},
+                {name: "Eminem", isChecked: false},
+                {name: "Chingy", isChecked: false},
+                {name: "Staind", isChecked: false},
+                {name: "Green Day", isChecked: false},
+                {name: "Metallica", isChecked: false},
+                {name: "Matchbox Twenty", isChecked: false}];
 
     constructor(
         private formBuilder: FormBuilder,
@@ -31,6 +42,7 @@ export class RegisterComponent implements OnInit {
             username: ['', Validators.required],
             password: ['', [Validators.required, Validators.minLength(6)]]
         });
+
     }
 
     // convenience getter for easy access to form fields
@@ -43,9 +55,24 @@ export class RegisterComponent implements OnInit {
         if (this.registerForm.invalid) {
             return;
         }
-
+        var body: any = this.registerForm.value;
+        var selected = this.artists.filter(
+            artist => {
+                return artist.isChecked;
+            }
+        );
+        if(selected.length > 5 || !selected || selected.length === 0) {
+            alert("Please choose 1 - 5 artists!");
+            return;
+        }
+        body.artists = selected.map(
+            artist => {
+                return artist.name;
+            }
+        );
+        //console.log('body', body);
         this.loading = true;
-        this.userService.register(this.registerForm.value)
+        this.userService.register(body)
             .pipe(first())
             .subscribe(
                 data => {
